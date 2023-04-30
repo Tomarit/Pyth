@@ -1,0 +1,5 @@
+import pytz
+from datetime import datetime
+tj = pytz.timezone('Asia/Dushanbe')
+dushanbe_current_datetime = datetime.now(tj)
+print(dushanbe_current_datetime)

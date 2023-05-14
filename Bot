@@ -1,0 +1,65 @@
+Для создания такого бота нужно использовать Python и библиотеку python-telegram-bot.
+
+Вот пример кода:
+
+``` python
+
+import telegram
+
+import time
+
+token = 'YOUR_BOT_TOKEN'
+
+bot = telegram.Bot(token=token)
+
+# замените YOUR_BOT_TOKEN на токен вашего бота
+
+def start(update, context):
+
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Бот начал работу!")
+
+    # при команде /start отправляем сообщение "Бот начал работу!"
+
+def alarm(context):
+
+    context.bot.send_message(chat_id=YOUR_CHAT_ID, text='Звинет!') 
+
+    # при каждом вызове этой функции отправляем сообщение "Звинет!" в чат с YOUR_CHAT_ID
+
+def main():
+
+    updater = telegram.ext.Updater(token=token, use_context=True)
+
+    job = updater.job_queue
+
+    start_handler = telegram.ext.CommandHandler('start', start)
+
+    updater.dispatcher.add_handler(start_handler)
+
+    job_repeat = job.run_repeating(alarm, interval=60, first=0)
+
+    # вызываем функцию alarm каждую минуту
+
+    updater.start_polling()
+
+    updater.idle()
+
+if __name__ == '__main__':
+
+    main()
+
+```
+
+После запуска бота и команды /start в чате, бот будет каждую минуту отправлять сообщение "Звинет!" в указанный чат. Для этого нужно указать свой chat_id вместо YOUR_CHAT_ID. 
+
+Для получения chat_id нужно сообщить боту команду "@" или "/start" и подождать, пока бот отправит сообщение в ваш чат. Затем можно использовать метод bot.get_updates() и найти chat_id в ответе.
+
+Примерно так:
+
+``` python
+
+print(bot.get_updates()[-1].message.chat_id)
+
+```
+
+Этот код напечатает chat_id последнего сообщения, которое вы отправили боту.

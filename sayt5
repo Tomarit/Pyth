@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Погода в Душанбе</title>
+  <script src="{{ url_for('static', filename='js/autchscript.js') }}"></script>
+</head>
+
+<body>
+  <div class="page">
+    <nav class="page__menu menu">
+      <ul class="menu__list r-list">
+        <li class="menu__group"><a href="https://www.instagramm.com/@ikromzajniev16" class="menu__link r-link text-underlined">Menu Instagramm</a></li>
+        <li class="menu__group"><a href="https://www.tiktok.com/@zayn1ev12" class="menu__link r-link text-underlined">Menu Tiktok</a></li>
+        <li class="menu__group"><a href="https://www.youtube.com/@zayn1ev856" class="menu__link r-link text-underlined">Menu Youtube</a></li>
+      </ul>
+    </nav>
+  </div>
+    <h2 align="center">Добро пожаловать!</h2>
+  <script>setInterval(time, 1000)</script>
+       
+<div align="center" id="time" style="font-weight: bold;"> 
+<span id="id_H" class="time" style="color: red;"></span> : <span id="id_M" class="time" style="color: yellow;"></span> : <span id="id_S" class="time" style="color:blue;" ></span>    
+</div>  
+    <header>
+  <link type='text/css' href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+  <!-- Меню -->
+  </div>
+  </header>
+  <div>
+   
+    <iframe class="name1" style="width:200px;border:0;overflow:hidden;background-color:transparent;height:344px"
+      scrolling="no"
+      src="https://fortrader.org/informers/getInformer?st=5&cat=7&title=%D0%9A%D1%83%D1%80%D1%81%D1%8B%20%D0%B2%D0%B0%D0%BB%D1%8E%D1%82%20TJ&texts=%7B%22toolTitle%22%3A%22%D0%92%D0%B0%D0%BB%D1%8E%D1%82%D0%B0%22%2C%22todayCourse%22%3A%22%22%7D&mult=1.5&showGetBtn=0&hideHeader=0&hideDate=0&w=0&codes=1&colors=false&items=2%2C21&columns=todayCourse&toCur=6"></iframe>
+    <iframe class="name2" style="width:200px;border:0;overflow:hidden;background-color:transparent;height:344px"
+      scrolling="no"
+      src="https://fortrader.org/informers/getInformer?st=5&cat=7&title=%D0%9A%D1%83%D1%80%D1%81%D1%8B%20%D0%B2%D0%B0%D0%BB%D1%8E%D1%82%20RUB&texts=%7B%22toolTitle%22%3A%22%D0%92%D0%B0%D0%BB%D1%8E%D1%82%D0%B0%22%2C%22todayCourse%22%3A%22%22%7D&mult=1.5&showGetBtn=0&hideHeader=0&hideDate=0&w=0&codes=1&colors=false&items=2%2C21&columns=todayCourse&toCur=11111"></iframe>
+    <iframe class="name3" style="width:200px;border:0;overflow:hidden;background-color:transparent;height:344px"
+      scrolling="no"
+      src="https://fortrader.org/informers/getInformer?st=5&cat=7&title=%D0%9A%D1%83%D1%80%D1%81%D1%8B%20%D0%B2%D0%B0%D0%BB%D1%8E%D1%82%20USD&texts=%7B%22toolTitle%22%3A%22%D0%92%D0%B0%D0%BB%D1%8E%D1%82%D0%B0%22%2C%22todayCourse%22%3A%22%22%7D&mult=1.5&showGetBtn=0&hideHeader=0&hideDate=0&w=0&codes=1&colors=false&items=21%2C6&columns=todayCourse&toCur=2"></iframe>
+    <a id="ms-informer-link-ec157aba38a593e4acb898cf186c7619" class="ms-informer-link"
+      href="https://www.meteoservice.ru/weather/overview/dushanbe">Погода в Душанбе</a>
+    <script class="ms-informer-script"
+      src="https://www.meteoservice.ru/informer/script/ec157aba38a593e4acb898cf186c7619" style="background-color: yellow;"></script>
+    <!-- End -->
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+Извините, это были просто фиктивные данные для примера. Чтобы получать более точные данные, можно использовать API погоды и курсов валют. Например, для получения данных о погоде можно использовать OpenWeatherMap API, а для получения курса валют - курсовые API банков. 
+
+Вот пример, как можно получить данные погоды с помощью OpenWeatherMap API и вывести их на страницу с помощью JavaScript:
+
+HTML:
+
+```html
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+ <title>Мой сайт</title>
+
+ <style type="text/css">
+
+  /* стили для блоков */
+
+  .block {padding:20px;border:1px solid #333;margin-top:20px;}
+
+  .block h2 {font-size:24px;margin:0 0 10px 0;padding:0;}
+
+  .block p {font-size:16px;margin:0;padding:0;}
+
+ </style>
+
+</head>
+
+<body>
+
+ <!-- блок с погодой -->
+
+ <div class="block">
+
+  <h2>Погода</h2>
+
+  <p>Погода на сегодня:</p>
+
+  <p id="weather"></p>
+
+ </div>
+
+ <!-- скрипт для получения данных погоды -->
+
+ <script type="text/javascript">
+
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=YOUR_API_KEY&units=metric')
+
+    .then(response => response.json())
+
+    .then(data => {
+
+      console.log(data);
+
+      document.getElementById('weather').innerHTML = `${data.weather[0].description}, температура ${data.main.temp}°C`;
+
+    });
+
+ </script>
+
+</body>
+
+</html>
+
+```
+
+Вместо `YOUR_API_KEY` нужно вставить свой API ключ с сайта OpenWeatherMap.
+
+А вот пример, как получить данные курсов валют с помощью курсовых API банков и вывести их на страницу с помощью Python и Flask:
+
+HTML:
+
+```html
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+ <title>Мой сайт</title>
+
+ <style type="text/css">
+
+  /* стили для блоков */
+
+  .block {padding:20px;border:1px solid #333;margin-top:20px;}
+
+  .block h2 {font-size:24px;margin:0 0 10px 0;padding:0;}
+
+  .block p {font-size:16px;margin:0;padding:0;}
+
+ </style>
+
+</head>
+
+<body>
+
+ <!-- блок с курсами валют -->
+
+ <div class="block">
+
+  <h2>Курсы валют</h2>
+
+  <p>Курс доллара: {{usd_rate}} рубля</p>
+
+  <p>Курс евро: {{eur_rate}} рубля</p>
+
+ </div>
+
+</body>
+
+</html>
+
+```
+
+Python:
+
+```python
+
+from flask import Flask, render_template
+
+import requests
+
+app = Flask(__name__)
+
+@app.route('/')
+
+def home():
+
+    # получаем курс доллара и евро через API банков
+
+    usd_rate = requests.get('https://www.cbr-xml-daily.ru/daily_json.js').json()['Valute']['USD']['Value']
+
+    eur_rate = requests.get('https://www.cbr-xml-daily.ru/daily_json.js').json()['Valute']['EUR']['Value']
+
+    return render_template('index.html', usd_rate=usd_rate, eur_rate=eur_rate)
+
+if __name__ == '__main__':
+
+    app.run(debug=True)
+
+```
+
+В этом примере используется API Центробанка России (https://www.cbr-xml-daily.ru/).

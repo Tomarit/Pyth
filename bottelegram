@@ -1,0 +1,24 @@
+import telebot
+from telebot import types
+bot = telebot.TeleBot("6228358689:AAFasaeIckZyYJJmyGSQVawp1AujmlvXsj4")
+@bot.message_handler(commands=['start'])
+def start_message(message):    
+    text0 = 'Привет, выбери что нужно:'
+    markup = types.InlineKeyboardMarkup()
+    item1 = types.InlineKeyboardButton("Youtube", callback_data="k1")
+    item2 = types.InlineKeyboardButton("Tiktok", callback_data="k2")
+    markup.add(item1, item2)
+    bot.send_message(message.chat.id, text = text0, reply_markup=markup)
+    
+# Вызов всех других функций
+@bot.callback_query_handler(func=lambda call: True)
+def all_functions(call: types.CallbackQuery):
+ # Вызов Quotes   
+    if call.data == "k1":
+        text2 = 'Ссылка из Youtube'
+        markup = types.InlineKeyboardMarkup()
+        item1 = types.InlineKeyboard("", callback_data="k1")
+        markup.add(item1,)
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text=text2, reply_markup=markup)
+
+bot.infinity_polling()

@@ -1,0 +1,91 @@
+Конечно! Я могу сделать бота, который позволит тебе вставлять ссылку на YouTube видео, а затем выдавать готовое видео.
+
+Для создания бота мы будем использовать Python на платформе Telegram. Чтобы запустить бота, нам нужно будет зарегистрировать нового бота в Telegram через BotFather. 
+
+Установи библиотеку `python-telegram-bot` с помощью команды:
+
+```python
+
+pip install python-telegram-bot
+
+```
+
+Вот код, который тебе нужен для создания бота:
+
+```python
+
+import os
+
+import telegram
+
+from telegram.ext import CommandHandler, MessageHandler, Filters, Updater
+
+import youtube_dl
+
+youtube_dl.utils.bug_reports_message = lambda: ''
+
+def start(update, context):
+
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Привет! Я - бот, который позволяет загружать видео с YouTube. Просто отправьте мне ссылку на видео, и я постараюсь загрузить его и отправить вам обратно.")
+
+def handle_message(update, context):
+
+    video_url = update.message.text
+
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Загрузка видео...")
+
+    try:
+
+        ydl_opts = {'outtmpl': '%(id)s.%(ext)s'}
+
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+
+            info_dict = ydl.extract_info(video_url, download=False)
+
+            video_id = info_dict.get("id", None)
+
+            if video_id:
+
+                filename = f'{video_id}.mp4'
+
+                ydl.download([video_url])
+
+                context.bot.send_video(chat_id=update.effective_chat.id, video=open(filename, 'rb'))
+
+                os.remove(filename)
+
+            else:
+
+                context.bot.send_message(chat_id=update.effective_chat.id, text="Не удалось загрузить видео.")
+
+    except Exception as e:
+
+        print("Error:", str(e))
+
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Возникла ошибка при загрузке видео. Попробуйте еще раз.")
+
+def main():
+
+    updater = Updater(token='TOKEN_TELEGRAM_BOT', use_context=True)
+
+    dp = updater.dispatcher
+
+    dp.add_handler(CommandHandler('start', start))
+
+    dp.add_handler(MessageHandler(Filters.text, handle_message))
+
+    updater.start_polling()
+
+    updater.idle()
+
+if __name__ == '__main__':
+
+    main()
+
+```
+
+Замени `TOKEN_TELEGRAM_BOT` на твой токен Telegram бота, который выдаёт BotFather.
+
+Запустив этот код, теперь ты можешь отправить ссылку на видео боту, и он загрузит видео с YouTube, а затем отправит обратно в виде mp4 файла.
+
+Обрати внимание, что мы используем библиотеку `youtube_dl` для загрузки видео. Она умеет обрабатывать не только видео с YouTube, но и с других платформ.

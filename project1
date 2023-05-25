@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Погода</title>
+        <style>
+        body{
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRkt_b0bkrJpoFERzfPw__5UNAkFgGkZkSXQ&usqp=CAU);
+            background-size: cover;
+        }
+        </style>
+        <!-- Меню -->
+        <div align="center">
+            <ul class="main">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><a href="#">О нас</a></li>
+              </ul>
+            <h2>Добро пожаловать!</h2>
+        </div>
+    </head>    
+</html>

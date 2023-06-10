@@ -1,0 +1,346 @@
+from flask import Flask, render_template
+ 
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template ( "index.html", title='О сайте', tit='Главная страница', menu='Weather', menu2='Communication', menu3='News', weather = 'Погода', tele = 'Общение')
+
+@app.route('/w')
+def w():
+    return render_template ('weathers.html')
+
+@app.route('/n')
+def a():
+    return render_template ('news.html')
+
+@app.route('/c')
+def c():
+    return render_template ('communication.html')
+
+ 
+if __name__ == "__main__":
+   app.run(debug=True)
+   
+   <!DOCTYPE html>
+<html>
+    <head>
+         <title>{{tit}}</title>
+
+         <link type="text/css" href="{{ url_for('static', filename='styles.css')}}" rel="stylesheet" />
+    </head>
+        <body><hr>
+            <h1>{{title}}</h1><hr>
+            <h2>В сайте вы можете узнать все о новостях и погоде и в сайте вы можете переместиться в телеграм и общаться с разработчиком</h2>
+                <nav>
+                    <a href="w">{{menu}}</a>
+                    <a href="c">{{menu2}}</a>
+                    <a href="n">{{menu3}}</a>
+                    <div id="indicator"></div>
+                  </nav><hr>
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZYBCE3GSmsUfc5E17r4xGpOQtp0c3mws34CuVJHRmyg&s><hr>
+            <h2>Желаем удачи!</h2>
+        </body><hr>
+</html>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{weather}}</title>
+
+        <link type="text/css" href="{{ url_for('static', filename='weathers.css')}}" rel="stylesheet" />
+    </head>
+        <body><hr>
+            <h1>О странице</h1><hr>
+            <h2>В этой странице вы увидите погоду в Душанбе.</h2><hr>
+            <div id="ab05a12fda8dd5edf59ee306b19b770e" class="ww-informers-box-854753"><p class="ww-informers-box-854754">
+            <a href="https://world-weather.ru/pogoda/russia/moscow/14days/">Точный прогноз погоды в Москве на 2 недели</a><br><a href="https://world-weather.ru/pogoda/russia/novosibirsk/">https://world-weather.ru/pogoda/russia/novosibirsk/</a></p></div>
+            <script async type="text/javascript" charset="utf-8" src="https://world-weather.ru/wwinformer.php?userid=ab05a12fda8dd5edf59ee306b19b770e"></script>
+            <style>.ww-informers-box-854754{-webkit-animation-name:ww-informers54;animation-name:ww-informers54;-webkit-animation-duration:1.5s;animation-duration:1.5s;white-space:nowrap;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;font-size:12px;font-family:Arial;line-height:18px;text-align:center}@-webkit-keyframes ww-informers54{0%,80%{opacity:0}100%{opacity:1}}@keyframes ww-informers54{0%,80%{opacity:0}100%{opacity:1}}</style><hr>
+            <img src="https://st3.depositphotos.com/1031174/12522/i/600/depositphotos_125225762-stock-photo-clouds-in-sky.jpg">
+        </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{tele}}</title>
+
+        <link type="text/css" href="{{ url_for('static', filename='tele.css')}}" rel="stylesheet" />
+    </head>
+        <body>
+            <h1>О странице</h1><hr>
+            <h2>В странице будут мои социальные сети</h2>
+            <h2>Если вам надо что то сказать, сообщите через соц сети</h2><hr>
+            <nav>
+                <p><a href="https://www.tiktok.com/@zayn1ev12"><img src="https://free-png.ru/wp-content/uploads/2020/07/Tik-Tok-Logo-1.png" border="0" alt="Пример"></a></p>
+                <div id="indicator"></div>
+              </nav>
+        </body>
+</html>
+
+body
+{
+    margin: 0;
+    background-color: #292929;
+    overflow: hidden;
+}
+
+nav
+{
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 319px;
+    display: table;
+    margin: 0 auto;
+    transform: translateY(-50%);
+}
+
+nav a
+{
+    position: relative;
+    width: 33.333%;
+    display: table-cell;
+    text-align: center;
+    color: #949494;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.2s ease color;
+}
+
+nav a:before, nav a:after
+{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.2s ease transform;
+}
+
+nav a:before
+{
+    top: 0;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+}
+
+nav a:after
+{
+    top: 5px;
+    left: 18px;
+    width: 4px;
+    height: 4px
+}
+
+nav a:nth-child(1):before
+{
+    background-color: yellow;
+}
+
+nav a:nth-child(1):after
+{
+    background-color: red;
+}
+
+nav a:nth-child(2):before
+{
+    background-color: #00e2ff;
+}
+
+nav a:nth-child(2):after
+{
+    background-color: #89ff00;
+}
+
+nav a:nth-child(3):before
+{
+    background-color: purple;
+}
+
+nav a:nth-child(3):after
+{
+    background-color: palevioletred;
+}
+
+#indicator
+{
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: 0.2s ease left;
+}
+
+nav a:hover
+{
+    color: #fff;
+}
+
+nav a:hover:before, nav a:hover:after
+{
+    transform: scale(1);
+}
+
+nav a:nth-child(1):hover ~ #indicator
+{
+    background: linear-gradient(130deg, yellow, red);
+}
+
+nav a:nth-child(2):hover ~ #indicator
+{
+    left: 34%;
+    background: linear-gradient(130deg, #00e2ff, #89ff00);
+}
+
+nav a:nth-child(3):hover ~ #indicator
+{
+    left: 70%;
+    background: linear-gradient(130deg, purple, palevioletred);
+}
+
+#ytd-url {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 10px 14px;
+  margin: 20px;
+  color: #fff;
+  font-family: Arial;
+  font-size: 14px;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+  z-index: 125;
+}
+h1{
+    color: #fff;
+    text-align: center;
+}
+h2{
+    color: #fff;
+    text-align: center;
+}
+img{
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+body
+{
+    margin: 0 ;
+    background-color: #292929;
+    overflow: hidden;
+}
+h1{
+    color: #fff;
+    text-align: center;
+}
+h2{
+    color: #fff;
+    text-align: center;
+}
+img{
+    width: 100%;
+}
+
+body{
+    margin: 0;
+    background-color: #292929;
+    overflow: hidden;
+}
+h1{
+    color: #fff;
+    text-align: center;
+}
+h2{
+    color: #fff;
+    text-align: center;
+    margin: 50px;
+}
+img{
+    width: 50%;
+    margin: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+nav
+{
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 319px;
+    display: table;
+    margin: 0 auto;
+    transform: translateY(-50%);
+}
+
+nav a
+{
+    position: relative;
+    width: 33.333%;
+    display: table-cell;
+    text-align: center;
+    color: #949494;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.2s ease color;
+}
+
+nav a:before, nav a:after
+{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.2s ease transform;
+}
+
+nav a:before
+{
+    top: 0;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+}
+
+nav a:after
+{
+    top: 5px;
+    left: 18px;
+    width: 4px;
+    height: 4px
+}
+nav a:hover:before, nav a:hover:after
+{
+    transform: scale(1);
+}
+#ytd-url {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 10px 14px;
+    margin: 20px;
+    color: #fff;
+    font-family: Arial;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: #000;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+    z-index: 125;
+  }

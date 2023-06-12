@@ -1,0 +1,17 @@
+body
+{
+    margin-top: 5%;
+    background: url('https://st3.depositphotos.com/1031174/12522/i/600/depositphotos_125225762-stock-photo-clouds-in-sky.jpg');background-size: cover;
+    overflow: hidden;
+    text-align: center;
+}
+img{
+    width: 40%;
+    margin-left: 30%;
+}
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: black; /* Цвет линии для остальных браузеров */
+    background-color: black; /* Цвет линии для браузера Firefox и Opera */
+    height: 2px; /* Толщина линии */
+   }

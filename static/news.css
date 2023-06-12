@@ -1,0 +1,12 @@
+body{
+    margin-top: 5%;
+    background: url("https://st.depositphotos.com/1006899/3776/i/600/depositphotos_37765339-stock-photo-news.jpg");background-size: cover;
+    overflow: hidden;
+    text-align: center;
+}
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: black; /* Цвет линии для остальных браузеров */
+    background-color: black; /* Цвет линии для браузера Firefox и Opera */
+    height: 2px; /* Толщина линии */
+   }

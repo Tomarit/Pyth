@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{weather}}</title>
+
+        <link type="text/css" href="{{ url_for('static', filename='weathers.css')}}" rel="stylesheet" />
+    </head>
+        <body><hr>
+            <h1>О странице</h1>
+            <h2>В этой странице вы увидите погоду в Душанбе.</h2><hr>
+            <!-- Weather widget by https://www.meteoservice.ru -->
+<a id="ms-informer-link-9b2389fffa259070f8060f3dafd1ef48" class="ms-informer-link" href="https://www.meteoservice.ru/weather/overview/dushanbe">Погода в Душанбе</a>
+<script class="ms-informer-script" src="https://www.meteoservice.ru/informer/script/9b2389fffa259070f8060f3dafd1ef48"></script>
+<!-- End -->
+        </body>
+</html>

@@ -1,0 +1,39 @@
+import telebot
+import requests
+import googletranslete
+
+# Установите токен вашего бота
+TOKEN = '5872404456:AAHR2_s7M5xDiPVH5ygZYPE5lYldS2P8UeI'
+
+# Создайте экземпляр бота
+bot = telebot.TeleBot(TOKEN)
+
+# Обработчик команды /start
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "Привет! бот новостей. Какую категорию новостей вы хотите получить?")
+
+# Обработчик текстовых сообщений
+@bot.message_handler(func=lambda message: True)
+def get_news(message):
+    category = message.text.lower()
+    news_url = f'https://newsapi.org/v2/top-headlines?country=us&category={category}&apiKey=4d85f710faf44ee2b82c6d9776571fdc'
+    
+    response = requests.get(news_url)
+    data = response.json()
+    
+    articles = data['articles']
+    
+    if len(articles) > 0:
+        for article in articles[:5]:
+            title = article['title']
+            description = article['description']
+            url = article['url']
+            
+            news_message = f"{title}\n\n{description}\n\nRead more: {url}"
+            bot.send_message(message.chat.id, news_message)
+    else:
+        bot.send_message(message.chat.id, "Извините, нет новостей по данной категории.")
+        
+# Запуск бота
+bot.polling()
